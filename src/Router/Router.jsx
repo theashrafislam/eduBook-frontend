@@ -6,6 +6,7 @@ import SignIn from "../Pages/SignIn";
 import SignUp from "../Pages/SignUp";
 import MyCollage from "../Pages/MyCollage";
 import PrivateRouter from "./PrivateRouter";
+import Profile from "../Pages/Profile";
 
 let router = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ let router = createBrowserRouter([
             {
                 path: '/my-collage',
                 element: <PrivateRouter><MyCollage /></PrivateRouter>
+            },
+            {
+                path: '/profile',
+                element: <PrivateRouter><Profile /></PrivateRouter>
             }
         ]
     }

@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from '../Firebase/Firebase.config';
 import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 
@@ -56,6 +56,13 @@ const AuthProvider = ({ children }) => {
             .finally(() => setLoading(false));
     };
 
+    // send Password Reset Email
+    const sendResetPasswordEmail = (email) => {
+        setLoading(true);
+        return sendPasswordResetEmail(auth, email)
+            .finally(() => setLoading(false));
+    }
+
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
@@ -74,7 +81,8 @@ const AuthProvider = ({ children }) => {
         loading,
         signInEmailPassword,
         signInUseingGoogle,
-        sginInUsingGithub
+        sginInUsingGithub,
+        sendResetPasswordEmail
     };
 
     return (

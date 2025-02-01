@@ -21,7 +21,7 @@ const SocialLoginButton = () => {
                         email: res?.user?.email
                     }
                     const result = await axios.post(`http://localhost:3000/user-register`, userInfo);
-                    console.log(result);
+                    // console.log(result);
                     if (result.status === 200) {
                         navigate(from);
                         toast.success("Login Successfully.")

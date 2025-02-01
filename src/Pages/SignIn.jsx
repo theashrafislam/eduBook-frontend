@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 import toast from 'react-hot-toast';
 import SocialLoginButton from '../Components/SocialLoginButton';
+import ForgotPassword from '../Components/ForgotPassword';
 
 const SignIn = () => {
   const { signInEmailPassword } = useAuth();
@@ -57,9 +58,10 @@ const SignIn = () => {
               required
               name='password'
             />
-            <p className="text-blue-500 hover:underline text-end cursor-pointer">
-              Forgot password?
-            </p>
+            {/* modal */}
+            <ForgotPassword />
+
+
           </div>
           <button
             type="submit"

@@ -40,15 +40,10 @@ const Navbar = () => {
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                        <li><a>Item 1</a></li>
-                        <li>
-                            <a>Parent</a>
-                            <ul className="p-2">
-                                <li><a>Submenu 1</a></li>
-                                <li><a>Submenu 2</a></li>
-                            </ul>
-                        </li>
-                        <li><a>Item 3</a></li>
+                        <li><Link to='/'>Home</Link></li>
+                        <li><Link to='/my-collage'>My College</Link></li>
+                        <li><Link>Colleges</Link></li>
+                        <li><Link>Admission</Link></li>
                     </ul>
                 </div>
                 <Link to={"/"} className="btn btn-ghost text-xl">EduBook</Link>
@@ -71,14 +66,14 @@ const Navbar = () => {
                                 <div className="w-10 rounded-full">
                                     <img
                                         alt="Tailwind CSS Navbar component"
-                                        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                        src="https://cdn3.iconfinder.com/data/icons/essential-rounded/64/Rounded-31-512.png" />
                                 </div>
                             </div>
                             <ul
                                 tabIndex={0}
                                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                                <li><a>Profile</a></li>
-                                <li onClick={handleLogOut}><a>Logout</a></li>
+                                <li className='text-2xl'><Link to='/profile'>Profile</Link></li>
+                                <li className='text-2xl' onClick={handleLogOut}><a>Logout</a></li>
                             </ul>
                         </div>
                 }
