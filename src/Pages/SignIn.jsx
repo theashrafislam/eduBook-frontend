@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { FaGoogle } from 'react-icons/fa';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { FcGoogle } from 'react-icons/fc';
+import { Link } from 'react-router-dom';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -19,7 +21,7 @@ const SignIn = () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100 px-4">
       <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-lg">
-        <h2 className="mb-6 text-center text-2xl font-bold text-gray-700">Sign in to Your Account</h2>
+        <h2 className="mb-6 text-center text-2xl font-bold text-gray-700">Sign in to your account</h2>
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-600">Email</label>
@@ -42,10 +44,13 @@ const SignIn = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+            <p className="text-blue-500 hover:underline text-end cursor-pointer">
+              Forgot password?
+            </p>
           </div>
           <button
             type="submit"
-            className="w-full rounded-md bg-blue-500 p-2 text-white hover:bg-blue-600"
+            className="w-full btn btn-success rounded-mdp-2 text-white"
           >
             Login
           </button>
@@ -57,13 +62,19 @@ const SignIn = () => {
         </div>
         <button
           onClick={handleGoogleLogin}
-          className="flex w-full items-center justify-center gap-2 rounded-md bg-red-500 p-2 text-white hover:bg-red-600"
+          className="flex w-full items-center justify-center gap-2 rounded-md p-2 border-2 border-gray-400 mb-3"
         >
-          <FaGoogle /> Login with Google
+          <FcGoogle className='text-2xl' /> Login with Google
         </button>
-        <p className="mt-4 text-center text-sm text-gray-600">
-          Forgot password? <a href="#" className="text-blue-500 hover:underline">Reset here</a>
-        </p>
+        <button
+          onClick={handleGoogleLogin}
+          className="flex w-full items-center justify-center gap-2 rounded-md p-2 border-2 border-gray-400"
+        >
+          <FaGithub className='text-2xl' color='none' /> Login with Google
+        </button>
+        <div>
+          <p className='py-2 text-center'>Don't have an account? <Link to="/sign-up" className='text-blue-500 hover:underline text-end cursor-pointer'>Sign up here</Link></p>
+        </div>
       </div>
     </div>
   );
