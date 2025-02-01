@@ -9,20 +9,23 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    // user create using email and password
     const createUserEmailPassword = async (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
             .finally(() => setLoading(false));
     };
 
+    // user profile update function 
     const updateProfileInformation = async (displayName, photoUrl) => {
         setLoading(true);
         return updateProfile(auth.currentUser, {
             displayName: displayName,
-            photoURL: photoUrl
+            photoUrl: photoUrl
         }).finally(() => setLoading(false));
     };
-
+    
+    // sign out function 
     const userSignOut = async () => {
         setLoading(true);
         return signOut(auth)

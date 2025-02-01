@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCd1MpSFOWu4v3yyau6m6C0Kb1EAe20oi8",
-  authDomain: "edubook-29055.firebaseapp.com",
-  projectId: "edubook-29055",
-  storageBucket: "edubook-29055.firebasestorage.app",
-  messagingSenderId: "244055120549",
-  appId: "1:244055120549:web:57716d06c68135dc6c4b4c"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId
 };
 
 // Initialize Firebase

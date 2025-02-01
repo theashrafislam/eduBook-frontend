@@ -6,9 +6,10 @@ const Navbar = () => {
 
     const {user} = useAuth();
     console.log(user);
+    // console.log(import.meta.env.VITE_apiKey);
 
     return (
-        <div className="navbar bg-base-100 rounded-2xl shadow-2xl">
+        <div className="navbar bg-base-100 rounded-2xl shadow-lg">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

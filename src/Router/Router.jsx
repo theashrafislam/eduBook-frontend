@@ -3,6 +3,7 @@ import Root from "../Layout/Root";
 import Error from "../Pages/Error";
 import Home from "../Pages/Home";
 import SignIn from "../Pages/SignIn";
+import SignUp from "../Pages/SignUp";
 
 let router = createBrowserRouter([
     {
@@ -17,6 +18,10 @@ let router = createBrowserRouter([
             {
                 path: '/sign-in',
                 element: <SignIn />
+            },
+            {
+                path: '/sign-up',
+                element: <SignUp />
             }
         ]
     }
