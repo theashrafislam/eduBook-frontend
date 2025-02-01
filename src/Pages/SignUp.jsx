@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
+import toast from 'react-hot-toast';
+import axios from 'axios';
 
 const SignUp = () => {
-
+    const navigate = useNavigate();
     const { createUserEmailPassword, userSignOut, updateProfileInformation } = useAuth();
 
     const handleSignUpForm = (e) => {
@@ -14,7 +16,9 @@ const SignUp = () => {
         const name = form.name.value;
         const email = form.email.value;
         const passwrod = form.password.value;
-        // const photoUrl = 'hello iam photo url'
+        if(passwrod.length < 6){
+            return toast.error("Password must be at least 6 characters long.")
+        }
         const userInfo = {
             name,
             email,
@@ -22,30 +26,27 @@ const SignUp = () => {
         }
         createUserEmailPassword(email, passwrod)
             .then(() => {
-                // userSignOut()
-                //     .then(() => {
-
-                //     })
-                //     .catch(error => {
-                //         console.log(error);
-                //     })
                 updateProfileInformation(name)
                     .then((result) => {
-                        console.log('hello i am working stiill');
                         userSignOut()
-                            .then(() => {
-                                alert('wow working now');
+                            .then( async () => {
+                                const result = await axios.post(`http://localhost:3000/user-register`, userInfo);
+                                if(result?.status === 200){
+                                    navigate('/sign-in');
+                                    e.target.reset();
+                                    toast.success(result?.data?.message);
+                                }
                             })
                             .catch(error => {
-                                console.log(error);
+                                toast.error(error.message)
                             })
                     })
                     .catch(error => {
-                        console.log(error);
+                        toast.error(error.message)
                     })
             })
             .catch(error => {
-                console.log(error);
+                toast.error(error.message)
             })
     }
 
