@@ -1,16 +1,31 @@
 import { useState } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../Hooks/useAuth';
+import toast from 'react-hot-toast';
 
 const SignIn = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { signInEmailPassword } = useAuth();
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log('Logging in with:', email, password);
-    // Implement login logic here
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    const loginInfo = {
+      email,
+      password
+    };
+    signInEmailPassword(email, password)
+      .then(() => {
+        navigate('/');
+        toast.success('Login successful!" 🚀');
+      })
+      .catch(error => {
+        toast.error(error.message)
+      })
   };
 
   const handleGoogleLogin = () => {
@@ -29,9 +44,8 @@ const SignIn = () => {
               type="email"
               className="mt-1 w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:outline-none"
               placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               required
+              name='email'
             />
           </div>
           <div>
@@ -40,9 +54,8 @@ const SignIn = () => {
               type="password"
               className="mt-1 w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:outline-none"
               placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
               required
+              name='password'
             />
             <p className="text-blue-500 hover:underline text-end cursor-pointer">
               Forgot password?

@@ -1,12 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
+import toast from 'react-hot-toast';
 
 const Navbar = () => {
 
-    const {user} = useAuth();
+    const { user, userSignOut } = useAuth();
     console.log(user);
     // console.log(import.meta.env.VITE_apiKey);
+
+    const handleLogOut = () => {
+        userSignOut()
+            .then(() => {
+                toast.success('Logged out! 🚀')
+            })
+            .catch(error => {
+                toast.error(error.message)
+            })
+    }
 
     return (
         <div className="navbar bg-base-100 rounded-2xl shadow-lg">
@@ -51,7 +62,26 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to={'/sign-in'}><button className="btn btn-success">Login</button></Link>
+                {
+                    user === null ?
+                        <Link to={'/sign-in'}><button className="btn btn-success">Login</button></Link>
+                        :
+                        <div className="dropdown dropdown-end">
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img
+                                        alt="Tailwind CSS Navbar component"
+                                        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                </div>
+                            </div>
+                            <ul
+                                tabIndex={0}
+                                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                                <li><a>Profile</a></li>
+                                <li onClick={handleLogOut}><a>Logout</a></li>
+                            </ul>
+                        </div>
+                }
             </div>
         </div>
     );
