@@ -1,10 +1,8 @@
-import { useState } from 'react';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { FcGoogle } from 'react-icons/fc';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import SocialLoginButton from '../Components/SocialLoginButton';
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -31,6 +29,7 @@ const SignUp = () => {
                         userSignOut()
                             .then( async () => {
                                 const result = await axios.post(`http://localhost:3000/user-register`, userInfo);
+                                console.log(result);
                                 if(result?.status === 200){
                                     navigate('/sign-in');
                                     e.target.reset();
@@ -97,16 +96,7 @@ const SignUp = () => {
                     <span className="mx-2 text-gray-500">or</span>
                     <hr className="w-full border-gray-300" />
                 </div>
-                <button
-                    className="flex w-full items-center justify-center gap-2 rounded-md p-2 border-2 border-gray-400 mb-3"
-                >
-                    <FcGoogle className='text-2xl' /> Sign up with Google
-                </button>
-                <button
-                    className="flex w-full items-center justify-center gap-2 rounded-md p-2 border-2 border-gray-400"
-                >
-                    <FaGithub className='text-2xl' /> Sign up with GitHub
-                </button>
+                <SocialLoginButton />
                 <div>
                     <p className='py-2 text-center'>Already have an account? <Link to="/sign-in" className='text-blue-500 hover:underline text-end cursor-pointer'>Sign in here</Link></p>
                 </div>

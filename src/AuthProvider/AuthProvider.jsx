@@ -1,8 +1,11 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from '../Firebase/Firebase.config';
+import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 
 export const AuthContext = createContext(null);
+const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
@@ -23,6 +26,20 @@ const AuthProvider = ({ children }) => {
             .finally(() => setLoading(false));
     }
 
+    //user google login 
+    const signInUseingGoogle = async () => {
+        setLoading(true);
+        return signInWithPopup(auth, googleProvider)
+            .finally(() => setLoading(false));
+    }
+
+    //user github login
+    const sginInUsingGithub = async () => {
+        setLoading(true);
+        return signInWithPopup(auth, githubProvider)
+            .finally(() => setLoading(false));
+    }
+
     // user profile update function 
     const updateProfileInformation = async (displayName, photoUrl) => {
         setLoading(true);
@@ -31,7 +48,7 @@ const AuthProvider = ({ children }) => {
             photoUrl: photoUrl
         }).finally(() => setLoading(false));
     };
-    
+
     // sign out function 
     const userSignOut = async () => {
         setLoading(true);
@@ -55,7 +72,9 @@ const AuthProvider = ({ children }) => {
         userSignOut,
         user,
         loading,
-        signInEmailPassword
+        signInEmailPassword,
+        signInUseingGoogle,
+        sginInUsingGithub
     };
 
     return (

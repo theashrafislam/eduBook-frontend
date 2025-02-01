@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { FcGoogle } from 'react-icons/fc';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 import toast from 'react-hot-toast';
+import SocialLoginButton from '../Components/SocialLoginButton';
 
 const SignIn = () => {
   const { signInEmailPassword } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state || "/";
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -20,7 +20,7 @@ const SignIn = () => {
     };
     signInEmailPassword(email, password)
       .then(() => {
-        navigate('/');
+        navigate(from);
         toast.success('Login successful!" 🚀');
       })
       .catch(error => {
@@ -73,18 +73,7 @@ const SignIn = () => {
           <span className="mx-2 text-gray-500">or</span>
           <hr className="w-full border-gray-300" />
         </div>
-        <button
-          onClick={handleGoogleLogin}
-          className="flex w-full items-center justify-center gap-2 rounded-md p-2 border-2 border-gray-400 mb-3"
-        >
-          <FcGoogle className='text-2xl' /> Login with Google
-        </button>
-        <button
-          onClick={handleGoogleLogin}
-          className="flex w-full items-center justify-center gap-2 rounded-md p-2 border-2 border-gray-400"
-        >
-          <FaGithub className='text-2xl' color='none' /> Login with Google
-        </button>
+        <SocialLoginButton />
         <div>
           <p className='py-2 text-center'>Don't have an account? <Link to="/sign-up" className='text-blue-500 hover:underline text-end cursor-pointer'>Sign up here</Link></p>
         </div>

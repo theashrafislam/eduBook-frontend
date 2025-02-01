@@ -4,6 +4,8 @@ import Error from "../Pages/Error";
 import Home from "../Pages/Home";
 import SignIn from "../Pages/SignIn";
 import SignUp from "../Pages/SignUp";
+import MyCollage from "../Pages/MyCollage";
+import PrivateRouter from "./PrivateRouter";
 
 let router = createBrowserRouter([
     {
@@ -22,6 +24,10 @@ let router = createBrowserRouter([
             {
                 path: '/sign-up',
                 element: <SignUp />
+            },
+            {
+                path: '/my-collage',
+                element: <PrivateRouter><MyCollage /></PrivateRouter>
             }
         ]
     }
