@@ -1,13 +1,27 @@
+import axios from 'axios';
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const DetailsCard = ({ data }) => {
+    const nagivate = useNavigate();
     const [selectedRating, setSelectedRating] = useState(data?.rating || 0);
 
     // Handle rating change
-    const handleRatingChange = (rating) => {
+    const handleRatingChange = async (rating) => {
         setSelectedRating(rating);
         console.log("Selected Rating:", rating);
 
+        const bodyInfo = {
+            id: data?._id,
+            rating
+        };
+        const response = await axios.patch('http://localhost:3000/rating-update', bodyInfo)
+        // console.log(response?.data?.data);
+        if(response?.data?.data?.modifiedCount > 0){
+            nagivate('/')
+            toast.success('Rating update successfully.')
+        }
     };
 
     return (
@@ -35,7 +49,7 @@ const DetailsCard = ({ data }) => {
                             <input
                                 key={i}
                                 type="radio"
-                                name={`rating-${data?.id}`} 
+                                name={`rating-${data?.id}`}
                                 className="mask mask-star-2 bg-orange-400"
                                 checked={selectedRating === i + 1}
                                 onChange={() => handleRatingChange(i + 1)}
