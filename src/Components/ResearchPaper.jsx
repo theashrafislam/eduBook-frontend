@@ -20,7 +20,7 @@ const researchPapers = [
 
 const ResearchPaper = () => {
     return (
-        <section className="py-10">
+        <section className="py-10 mx-3 lg:mx-0">
             <div className="max-w-4xl mx-auto text-center">
                 <h2 className="text-2xl font-bold text-gray-800 mb-6">
                     Recommended Research Papers

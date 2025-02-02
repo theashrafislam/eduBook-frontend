@@ -35,13 +35,13 @@ const CollegeSection = () => {
             </h2>
 
             {/* Search Box and Button */}
-            <div className="z-10 flex gap-2 p-4 border-2 rounded-lg shadow-lg backdrop-blur-md w-full mx-auto bg-white/30 mb-5">
+            <div className="z-10 flex flex-col md:flex-row gap-2 p-4 border-2 rounded-lg shadow-lg backdrop-blur-md w-full mx-auto bg-white/30 mb-5">
                 <input
                     type="text"
                     placeholder="Search College Name..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="px-4 py-2 w-64 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="px-4 py-2 w-full md:w-64 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <button
                     onClick={handleSearch}

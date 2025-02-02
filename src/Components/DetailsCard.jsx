@@ -25,8 +25,8 @@ const DetailsCard = ({ data }) => {
     };
 
     return (
-        <div className='grid grid-cols-2 gap-3 items-center'>
-            <div className="">
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-3 items-center'>
+            <div className="p-2">
                 <img
                     className="h-48 w-full object-cover"
                     src={data?.image}
