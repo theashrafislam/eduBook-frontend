@@ -8,6 +8,8 @@ function CollegeDetails() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    // console.log(college)
+
     useEffect(() => {
         const fetchCollege = async () => {
             try {
@@ -47,7 +49,7 @@ function CollegeDetails() {
                 <div className="md:ml-6">
                     <h1 className="text-3xl font-semibold text-gray-800">{college.name}</h1>
                     <p className="text-xl text-gray-600 mt-2">Rating: {college.rating}</p>
-                    <p className="text-lg text-gray-600 mt-2">Admission Date: {college.admissionDate}</p>
+                    <p className="text-lg text-gray-600 mt-2">Admission Date: {college.admissionDates}</p>
                     <p className="text-lg text-gray-600 mt-2">Research Papers: {college.researchCount}</p>
                     <div className="mt-4">
                         <h2 className="text-2xl font-semibold text-gray-800">Events</h2>

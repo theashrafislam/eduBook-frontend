@@ -10,20 +10,6 @@ const CollegeCard = ({college}) => {
                 <p className="text-gray-600 mt-2">
                     <span className="font-semibold">Admission:</span> {college.admissionDates}
                 </p>
-                <p className="text-gray-600 mt-2">
-                    <span className="font-semibold">Research:</span> {college.researchCount}
-                </p>
-                <p className="mt-2">
-                    <span className="font-semibold">Sports:</span> {college.sports.join(", ")}
-                </p>
-                <div className="mt-3">
-                    <span className="text-blue-500 font-semibold">Upcoming Events:</span>
-                    <ul className="text-gray-700 list-disc pl-5">
-                        {college.events.map((event, index) => (
-                            <li key={index}>{event}</li>
-                        ))}
-                    </ul>
-                </div>
             </div>
         </Link>
     );

@@ -10,7 +10,7 @@ const DetailsCard = ({ data }) => {
     // Handle rating change
     const handleRatingChange = async (rating) => {
         setSelectedRating(rating);
-        console.log("Selected Rating:", rating);
+        // console.log("Selected Rating:", rating);
 
         const bodyInfo = {
             id: data?._id,
