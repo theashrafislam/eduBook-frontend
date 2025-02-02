@@ -62,7 +62,7 @@ const AdmissionBook = () => {
                 };
 
                 // Send admissionData to your server
-                const serverResponse = await axios.post('http://localhost:3000/admission-book', admissionData);
+                const serverResponse = await axios.post('https://edu-book-server.vercel.app/admission-book', admissionData);
                 if(serverResponse?.data?.data?.insertedId){
                     e.target.reset()
                     toast.success('Admission Book Done')

@@ -10,7 +10,7 @@ const College = () => {
     useEffect(() => {
         const fetchColleges = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/college-collection');
+                const response = await axios.get('https://edu-book-server.vercel.app/college-collection');
                 // console.log(response?.data);
                 setColleges(response?.data?.data);
             } catch (err) {

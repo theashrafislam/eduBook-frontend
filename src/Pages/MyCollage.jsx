@@ -11,15 +11,16 @@ const MyCollage = () => {
     // console.log(filteredData);
 
     const getCollageId = async () => {
-        const response = await axios.get(`http://localhost:3000/admission-book/${user?.email}`);
+        const response = await axios.get(`https://edu-book-server.vercel.app/admission-book/${user?.email}`);
         setCollageId(response?.data);
         // console.log(response?.data);
     }
 
     const collageDataGet = async () => {
-        const response = await axios.get('http://localhost:3000/college-collection');
+        const response = await axios.get('https://edu-book-server.vercel.app/college-collection');
         setCollageData(response?.data?.data)
         // console.log(response?.data?.data);
+        
     }
 
     useEffect(() => {
@@ -30,7 +31,9 @@ const MyCollage = () => {
     return (
         <div>
             {
-                filteredData?.map((item, index) => (
+                filteredData.length === 0 ? <div className='flex items-center justify-center'>
+                    <h1>No data availabe</h1>
+                </div> : filteredData?.map((item, index) => (
                     <DetailsCard key={index} data={item} />
                 ))
             }

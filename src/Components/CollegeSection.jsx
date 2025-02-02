@@ -14,7 +14,7 @@ const CollegeSection = () => {
 
     const getData = async (query = '') => {
         try {
-            const result = await axios.get('http://localhost:3000/college-collection', {
+            const result = await axios.get('https://edu-book-server.vercel.app/college-collection', {
                 params: { search: query }
             });
             setCollages(result?.data?.data || []);

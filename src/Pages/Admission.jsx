@@ -6,7 +6,7 @@ const Admission = () => {
     const [colleges, setColleges] = useState([]);
     const getData = async () => {
         try {
-            const result = await axios.get('http://localhost:3000/college-collection');
+            const result = await axios.get('https://edu-book-server.vercel.app/college-collection');
             setColleges(result?.data?.data || []);
         } catch (error) {
             console.error('Error fetching colleges:', error);

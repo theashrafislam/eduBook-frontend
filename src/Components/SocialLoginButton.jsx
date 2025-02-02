@@ -20,7 +20,7 @@ const SocialLoginButton = () => {
                         name: res?.user?.displayName,
                         email: res?.user?.email
                     }
-                    const result = await axios.post(`http://localhost:3000/user-register`, userInfo);
+                    const result = await axios.post(`https://edu-book-server.vercel.app/user-register`, userInfo);
                     // console.log(result);
                     if (result.status === 200) {
                         navigate(from);
@@ -37,7 +37,7 @@ const SocialLoginButton = () => {
                         name: res?.user?.displayName,
                         email: res?.user?.email
                     }
-                    const result = await axios.post(`http://localhost:3000/user-register`, userInfo);
+                    const result = await axios.post(`https://edu-book-server.vercel.app/user-register`, userInfo);
                     // console.log(result);
                     if (result.status === 200) {
                         navigate(from);

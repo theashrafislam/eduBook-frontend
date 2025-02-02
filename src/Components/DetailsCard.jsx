@@ -16,7 +16,7 @@ const DetailsCard = ({ data }) => {
             id: data?._id,
             rating
         };
-        const response = await axios.patch('http://localhost:3000/rating-update', bodyInfo)
+        const response = await axios.patch('https://edu-book-server.vercel.app/rating-update', bodyInfo)
         // console.log(response?.data?.data);
         if(response?.data?.data?.modifiedCount > 0){
             nagivate('/')

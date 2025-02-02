@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 const ReviewSection = () => {
   const [collageData, setCollageData] = useState([]);
   const getCollgeData = async () => {
-    const res = await axios.get('http://localhost:3000/college-collection');
+    const res = await axios.get('https://edu-book-server.vercel.app/college-collection');
     setCollageData(res?.data?.data)
     // console.log(res?.data?.data);
   }

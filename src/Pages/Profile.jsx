@@ -10,7 +10,7 @@ const Profile = () => {
     // console.log(isEditing);
 
     const getUserData = async () => {
-        const res = await axios.get(`http://localhost:3000/profile/${user?.email}`);
+        const res = await axios.get(`https://edu-book-server.vercel.app/profile/${user?.email}`);
         setUserInfo(res?.data);
     };
 
@@ -27,7 +27,7 @@ const Profile = () => {
         };
 
         try {
-            const res = await axios.patch(`http://localhost:3000/profile-update/${user?.email}`, extraInfo);
+            const res = await axios.patch(`https://edu-book-server.vercel.app/profile-update/${user?.email}`, extraInfo);
             // console.log(res);
             // console.log(res?.data);
             if(res?.data?.data?.modifiedCount > 0){
