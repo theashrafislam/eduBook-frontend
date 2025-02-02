@@ -17,7 +17,7 @@ const ForgotPassword = () => {
         sendResetPasswordEmail(email)
             .then(() => {
                 toast.success('Password reset email sent successfully.');
-                setIsModalOpen(false); // Close modal after success
+                setIsModalOpen(false);
             })
             .catch(error => {
                 toast.error(error.message || 'Failed to send reset email.');
@@ -70,7 +70,7 @@ const ForgotPassword = () => {
                 position="top-center"
                 toastOptions={{
                     style: {
-                        zIndex: 9999, // Ensure toast appears above everything
+                        zIndex: 9999,
                     },
                 }}
             />

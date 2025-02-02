@@ -7,6 +7,10 @@ import SignUp from "../Pages/SignUp";
 import MyCollage from "../Pages/MyCollage";
 import PrivateRouter from "./PrivateRouter";
 import Profile from "../Pages/Profile";
+import College from "../Pages/College";
+import CollegeDetails from "../Components/CollegeDetails";
+import Admission from "../Pages/Admission";
+import AdmissionBook from "../Components/AdmissionBook";
 
 let router = createBrowserRouter([
     {
@@ -33,7 +37,23 @@ let router = createBrowserRouter([
             {
                 path: '/profile',
                 element: <PrivateRouter><Profile /></PrivateRouter>
-            }
+            },
+            {
+                path: '/college',
+                element: <College />
+            },
+            {
+                path: `/college/:id`,
+                element: <PrivateRouter><CollegeDetails /></PrivateRouter>
+            },
+            {
+                path: '/admission',
+                element: <Admission />
+            },
+            {
+                path: '/admission/:id',
+                element: <PrivateRouter><AdmissionBook /></PrivateRouter>
+            },
         ]
     }
 ]);
